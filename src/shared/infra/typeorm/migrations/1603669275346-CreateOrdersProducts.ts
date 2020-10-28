@@ -6,7 +6,7 @@ export default class CreateOrdersProducts1603669275346
     await queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
     await queryRunner.createTable(
       new Table({
-        name: 'orderProducts',
+        name: 'orders_products',
         columns: [
           {
             name: 'id',
@@ -17,7 +17,7 @@ export default class CreateOrdersProducts1603669275346
           },
           {
             name: 'price',
-            type: 'varchar',
+            type: 'decimal',
             precision: 10,
             scale: 2,
           },
@@ -26,12 +26,12 @@ export default class CreateOrdersProducts1603669275346
             type: 'int',
           },
           {
-            name: 'createdAt',
+            name: 'created_at',
             type: 'timestamp',
             default: 'now()',
           },
           {
-            name: 'updatedAt',
+            name: 'updated_at',
             type: 'timestamp',
             default: 'now()',
           },
@@ -41,6 +41,6 @@ export default class CreateOrdersProducts1603669275346
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('orderProducts');
+    await queryRunner.dropTable('orders_products');
   }
 }
